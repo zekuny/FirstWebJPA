@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the USERJPA database table.
- * 
+ *  
  */
 @Entity
 @Table(name="Userjpa", schema="testdb")

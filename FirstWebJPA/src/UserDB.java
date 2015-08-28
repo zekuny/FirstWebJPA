@@ -22,7 +22,7 @@ public class UserDB {
 		} finally {
 			em.close();
 		}
-	}
+	} 
 
 	public static void update(Userjpa user) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -74,7 +74,7 @@ public class UserDB {
 
 	public static List<Userjpa> selectSearchResult(String keyword){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
-		String qString = "select i from Userjpa i where i.post like '%" + keyword + "%'";
+		String qString = "select i from Userjpa i where i.post like '%" + keyword + "%' order by i.twitterid desc";
 		TypedQuery<Userjpa> q = em.createQuery(qString, Userjpa.class);
 		List<Userjpa> users;
 		try{

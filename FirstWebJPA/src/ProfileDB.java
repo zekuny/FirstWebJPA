@@ -71,7 +71,24 @@ public class ProfileDB {
 		return users;
 	}
 	
-	public static boolean checkLogin(String username){
+/*	public static List<Userprofile> getProfile(String uname){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Userprofile i where i.username = ?1";
+		TypedQuery<Userprofile> q = em.createQuery(qString, Userprofile.class);
+		q.setParameter(1, uname);
+		List<Userprofile> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users;
+	}*/
+	
+/*	public static boolean checkLogin(String username){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
 		String qString = "select i from Userprofile i where i.username = '" + username + "'";
 		TypedQuery<Userprofile> q = em.createQuery(qString, Userprofile.class);
@@ -85,5 +102,18 @@ public class ProfileDB {
 			em.close();
 		}
 		return false;
+	}*/
+	
+	public static boolean checkLogin(String username){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select count(i) from Userprofile i where i.username = '" + username + "'";
+		TypedQuery<Long> query = em.createQuery(qString, Long.class);
+		long total = query.getSingleResult();
+		if(total > 0){
+			return true;
+		}else{
+			return false;
+		}
 	}
+	
 }

@@ -59,7 +59,7 @@ public class Userprofile implements Serializable {
 
 	public String getLastname() {
 		return this.lastname;
-	}
+	} 
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;

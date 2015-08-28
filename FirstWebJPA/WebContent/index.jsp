@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
+<%  
 if(session.getAttribute("username") == null){%>  <!-- If there is now user then the login button will show -->
 <div class="container">
 	<div class="dropdown">
@@ -82,5 +82,7 @@ if(session.getAttribute("username") == null){%>  <!-- If there is now user then 
 		</center>
 	</div>
 </div>
+<img src="1.jpg" alt="Mountain View">
+<img src="1.jpg" alt="Mountain View" style="width:24px;height:24px;">
 </body>
 </html>
