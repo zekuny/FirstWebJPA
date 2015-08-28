@@ -44,7 +44,8 @@ if(session.getAttribute("username") == null){%>  <!-- If there is now user then 
 
 <!-- Else, the username is displayed and there is an option of viewing your profile and logging out -->
 <% }else{ %>
-	<div>Welcome <%= session.getAttribute("username") %><a href = "LogoutServlet"><button>Logout</button></a></div><br><br>
+	
+	<div>Welcome <%= session.getAttribute("username") %><a href = "LogoutServlet"><button>Logout</button></a><a href = "MessageServlet"><button>Messages</button></a></div><br><br>
 	
 	<form name = "myForm" class="form-horizontal" method="post" action="testJPA" onsubmit="return validateForm()">
 	    <div class="form-group">
@@ -82,7 +83,7 @@ if(session.getAttribute("username") == null){%>  <!-- If there is now user then 
 		</center>
 	</div>
 </div>
-<img src="1.jpg" alt="Mountain View">
-<img src="1.jpg" alt="Mountain View" style="width:24px;height:24px;">
+<img src="images/1.jpg" alt="Mountain View">
+<img src="images/1.jpg" alt="Mountain View" style="width:24px; height:24px;">
 </body>
 </html>

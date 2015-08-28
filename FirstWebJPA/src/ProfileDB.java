@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,6 +70,55 @@ public class ProfileDB {
 			em.close();
 		}
 		return users;
+	}
+	
+	public static List<Userprofile> getProfileLike(String uname){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Userprofile i where i.username like '%" + uname + "%'";
+		TypedQuery<Userprofile> q = em.createQuery(qString, Userprofile.class);
+		List<Userprofile> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users;
+	}
+	
+	public static List<Userprofile> getProfile(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Userprofile i";
+		TypedQuery<Userprofile> q = em.createQuery(qString, Userprofile.class);
+		List<Userprofile> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		return users;
+	}
+	
+	public static String getProfileimage(String uname){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();	
+		String qString = "select i from Userprofile i where i.username = '" + uname + "'";
+		TypedQuery<Userprofile> q = em.createQuery(qString, Userprofile.class);
+		List<Userprofile> users;
+		try{
+			users = q.getResultList();
+			if(users == null || users.isEmpty()){
+				users = null;
+			}
+		}finally{
+			em.close();
+		}
+		ArrayList<Userprofile> lists = new ArrayList<Userprofile>(users);
+		return lists.get(0).getProfileimage();
 	}
 	
 /*	public static List<Userprofile> getProfile(String uname){

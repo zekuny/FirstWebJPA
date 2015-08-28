@@ -29,6 +29,8 @@ public class Userprofile implements Serializable {
 	private String moto;
 
 	private String username;
+	
+	private String profileimage;
 
 	public Userprofile() {
 	}
@@ -79,6 +81,14 @@ public class Userprofile implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getProfileimage() {
+		return this.profileimage;
+	}
+
+	public void setProfileimage(String profileimage) {
+		this.profileimage = profileimage;
 	}
 
 }

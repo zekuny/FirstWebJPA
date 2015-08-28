@@ -46,8 +46,10 @@ public class testJPA extends HttpServlet {
 					    + "<thead>" + "<tr>" + "<th>User Name</th>" + "<th>Post</th>" + "<th>Post Date</th></tr>"
 					    +   "</thead>" + "<tbody>";	    
 				for(Userjpa u : lists){
+					String uname = u.getUsername();
+					String profileimage = ProfileDB.getProfileimage(uname);
 					table += "<tr>";
-					table += "<td><a href = \"ProfileServlet?uname=" + u.getUsername() + "\">" + u.getUsername() + "</a></td>";
+					table += "<td><a href = \"ProfileServlet?uname=" + u.getUsername() + "\">" + "<img src=\"" + profileimage + "\" alt=\"Profile image\" style=\"width:24px; height:24px;\">" + u.getUsername() + "</a></td>";
 					table += "<td>" + u.getPost() + "</td>";
 					table += "<td>" + u.getPostdate() + "</td>";
 					table += "</tr>";
@@ -78,8 +80,10 @@ public class testJPA extends HttpServlet {
 					    + "<thead>" + "<tr>" + "<th>User Name</th>" + "<th>Post</th>" + "<th>Post Date</th></tr>"
 					    +   "</thead>" + "<tbody>";	    
 				for(Userjpa u : lists){
+					String uname = u.getUsername();
+					String profileimage = ProfileDB.getProfileimage(uname);
 					table += "<tr>";
-					table += "<td><a href = \"ProfileServlet?uname=" + u.getUsername() + "\">" + u.getUsername() + "</a></td>";
+					table += "<td><a href = \"ProfileServlet?uname=" + u.getUsername() + "\">" + "<img src=\"" + profileimage + "\" alt=\"Profile image\" style=\"width:24px; height:24px;\">" + u.getUsername() + "</a></td>";
 					table += "<td>" + u.getPost() + "</td>";
 					table += "<td>" + u.getPostdate() + "</td>";
 					table += "</tr>";

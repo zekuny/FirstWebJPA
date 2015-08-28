@@ -41,7 +41,7 @@ public class ProfileServlet extends HttpServlet {
 		table += "<thead><tr><th>User Name</th><th>FirstName</th><th>LastName</th><th>Moto</th><th>Join Date</th></tr></thead>";
 		ArrayList<Userprofile> lists = new ArrayList<Userprofile>(ProfileDB.getProfile(uname));
 		for(Userprofile u : lists){
-			table += "<tr><td>" + u.getUsername() + "</td><td>" + u.getFirstname() + "</td><td>" + u.getLastname() + "</td><td>" + u.getMoto() + "</td><td>" + u.getJoindate() + "</td></tr>\n";
+			table += "<tr><td><img src=\"" + u.getProfileimage() + "\" alt=\"Profile image\" style=\"width:24px; height:24px;\">" + u.getUsername() + "</td><td>" + u.getFirstname() + "</td><td>" + u.getLastname() + "</td><td>" + u.getMoto() + "</td><td>" + u.getJoindate() + "</td></tr>\n";
 		}
 		
 	
