@@ -14,6 +14,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>	
+
 <style>
 .other-color {
 	background: lightskyblue
@@ -22,19 +25,78 @@
 .jumbotron h1 {
 	color: slategray
 }
+
+.ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px 0;
+  margin: 2px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+
+  .ui-menu-item > a.ui-corner-all {
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;
+
+    &.ui-state-hover, &.ui-state-active {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #0088cc;
+      border-radius: 0px;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      background-image: none;
+    }
+  }
+}
 </style>
 
 <script type="text/javascript">
-function showData(value){ 
-$.ajax({
-    url : "ur_servlet?name=" + value,
-    type : "POST",
-    async : false,
-    success : function(data) {
-//Do something with the data here
+$(document).ready(function() {
+    $(function() {
+            $("#receiver").autocomplete({     
+            source : function(request, response) {
+            $.ajax({
+                    url : "ur_servlet",
+                    type : "GET",
+                    data : {
+                            term : request.term
+                    },
+                    dataType : "json",
+                    success : function(data) {
+                            response(data);
+                    }
+            });
     }
 });
-}
+});
+});
 </script>
 
 <title>Your messages!</title>
@@ -52,7 +114,11 @@ $.ajax({
     <div class="form-group">
         <label for="Assignment" class="col-sm-2 control-label">Send to: </label>
         <div class="col-sm-4">
-            <input type="text" class="form-control" id="receiver" name="receiver" onkeyup="showData(this.value);" value="">
+			<div class="search-container">
+   				<div class=".ui-autocomplete">
+            	<input type="text" class="form-control" id="receiver" name="receiver" class="search" />
+   				</div>
+			</div>
         </div>
     </div>
     <div class="form-group">

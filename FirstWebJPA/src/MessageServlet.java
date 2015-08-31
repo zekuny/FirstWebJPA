@@ -26,7 +26,7 @@ public class MessageServlet extends HttpServlet {
      */
     public MessageServlet() {
         super();
-    }
+    } 
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
